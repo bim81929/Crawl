@@ -42,7 +42,7 @@ def crawlID(url, driver, start_index):
                 page = 1
                 while(1):
                     driver.get(getUrlInShop(link, page))
-                    time.sleep(4)
+                    time.sleep(1)
                     total_height = int(driver.execute_script("return document.body.scrollHeight"))
                     for i in range(1, total_height, 100):
                         driver.execute_script("window.scrollTo(0, {});".format(i))
