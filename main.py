@@ -65,9 +65,13 @@ if __name__ == '__main__':
     from datetime import datetime
     print("Start crawl")
     start = datetime.now()
-    driver = webdriver.Chrome(PATH,chrome_options=chrome_options)
-    driver.maximize_window()
+    
+    for i in range(5, 15):
+        driver = webdriver.Chrome(PATH,chrome_options=chrome_options)
+        driver.maximize_window()
 
-    crawlID(url[500:1000], driver)
+        crawlID(url[i * 100: (i + 1) * 100], driver, i * 100)
+        driver.close()
+        time.sleep(60)
     print("Stop crawl")
     print('Total time: ', datetime.now() - start)
