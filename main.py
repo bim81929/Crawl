@@ -21,13 +21,13 @@ def getUrlInShop(baseUrl, num):
         return baseUrl
     return baseUrl + '?page=' + str(num) + '&sortBy=pop'
 
-def crawlID(url, driver):
+def crawlID(url, driver, start_index):
     with open("ID_product.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerow(["id_shop", "id_product"])
         length = len(url)
         for index in range(0, length):
-            print("Index: ", index)
+            print("Index: ", index + start_index)
             _url = url[index]
             driver.get(_url)
             time.sleep(4)
