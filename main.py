@@ -2,7 +2,6 @@ from selenium import webdriver
 PROXY = "14.177.235.17:8080"
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless')
-chrome_options.add_argument('--proxy-server=%s' % PROXY)
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 
@@ -67,13 +66,16 @@ if __name__ == '__main__':
     from datetime import datetime
     print("Start crawl")
     start = datetime.now()
-    
+    list_proxy = ['list proxy']
     for i in range(5, 15):
+        PROXY = random.choice(list_proxy)
+        list_proxy.remove(PROXY)
+        chrome_options.add_argument('--proxy-server=%s' % PROXY)
         driver = webdriver.Chrome(PATH,chrome_options=chrome_options)
         driver.maximize_window()
 
         crawlID(url[i * 100: (i + 1) * 100], driver, i * 100)
         driver.close()
-        time.sleep(60)
+        time.sleep(10)
     print("Stop crawl")
     print('Total time: ', datetime.now() - start)
