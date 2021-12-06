@@ -65,8 +65,17 @@ if __name__ == '__main__':
     from datetime import datetime
     print("Start crawl")
     start = datetime.now()
-    list_proxy = ['list proxy']
-    for i in range(5, 15):
+    list_proxy = ['http://ipkuremb:bocdu4tfm4j3@209.127.191.180:9279',
+                    'http://ipkuremb:bocdu4tfm4j3@45.95.96.132:8691',
+                    'http://ipkuremb:bocdu4tfm4j3@45.95.96.187:8746',
+                    'http://ipkuremb:bocdu4tfm4j3@45.95.96.237:8796',
+                    'http://ipkuremb:bocdu4tfm4j3@193.8.127.189:9271',
+                    'http://ipkuremb:bocdu4tfm4j3@45.94.47.66:8110',
+                    'http://ipkuremb:bocdu4tfm4j3@45.94.47.108:8152',
+                    'http://ipkuremb:bocdu4tfm4j3@193.8.56.119:9183',
+                    'http://ipkuremb:bocdu4tfm4j3@45.95.99.226:7786',
+                    'http://ipkuremb:bocdu4tfm4j3@45.95.99.20:7580']
+    for i in range(10, 20):
         PROXY = random.choice(list_proxy)
         list_proxy.remove(PROXY)
         chrome_options.add_argument('--proxy-server=%s' % PROXY)
